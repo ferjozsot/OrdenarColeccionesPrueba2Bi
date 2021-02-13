@@ -12,6 +12,7 @@ public class ComparadorGenero extends Filtro implements Comparator<Cancion> {
 
     @Override
     public void ordenar(ArrayList<Cancion> canciones) {
+
         Collections.sort(canciones, new ComparadorGenero());
     }
 }
