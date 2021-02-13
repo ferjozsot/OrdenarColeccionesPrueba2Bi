@@ -1,0 +1,75 @@
+@startuml
+
+interface Comparator<<interface>>{
+compare( cancion: Cancion ) : int
+}
+class Cancion{
+genero : String
+autor : String
+album : String
+nombreCancion : String
+popularidad : int
+duracion : Date
+getGenero() : String
+getAutor() : String
+getAlbum() : String
+getNombreCancion() : String
+getDuracion() : Date
+getPopularidad() : int
+
+}
+class ComparadorAlbum{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+class ComparadorAutor{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+
+class ComparadorDuracion{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+class ComparadorGenero{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+class ComparadorNombreCancion{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+class ComparadorPopularidad{
+compare( cancion: Cancion ) : int
+ordenar(canciones : ArrayList<Cancion> )
+}
+class Filtro{
+ordenar(canciones : ArrayList<Cancion> );
+}
+class ServicioMusica{
+canciones : ArrayList<Cancion>
+nombreServicio : String
+agregarCancion(cancion : Cancion)
+imprimirListaCanciones(filtro : Filtro)
+}
+
+ServicioMusica -> Cancion
+ServicioMusica --> Filtro
+
+
+Filtro <|-- ComparadorAlbum
+Filtro <|-- ComparadorDuracion
+Filtro <|-- ComparadorAutor
+Filtro <|-- ComparadorGenero
+Filtro <|-- ComparadorNombreCancion
+Filtro <|-- ComparadorPopularidad
+
+ComparadorPopularidad ..|> Comparator : implements
+ComparadorGenero ..|> Comparator : implements
+ComparadorAutor ..|> Comparator : implements
+ComparadorAlbum ..|> Comparator : implements
+ComparadorDuracion ..|> Comparator : implements
+ComparadorNombreCancion ..|> Comparator : implements
+
+
+@enduml
